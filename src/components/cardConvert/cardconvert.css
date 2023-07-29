@@ -2,10 +2,55 @@
 
 .container-convert {
   margin: 48px 0px 0px 529px;
+  padding-left: 38px;
+  padding-top: 24px;
   width: 714px;
   height: 193px;
   flex-shrink: 0;
   border-radius: 21px;
   background: #2e0039;
   box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.2);
+}
+
+.container-convert h2 {
+  width: 104px;
+  height: 35px;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.container-select {
+  margin-top: 23px;
+  width: 218px;
+  height: auto;
+}
+
+.container-select select {
+  background-color: transparent;
+  padding: 7px;
+  /* border: none; */
+  /* appearance: none; */
+  width: 218px;
+  height: 17px;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-bottom: 2px solid #fff;
+}
+
+.container-select select:focus {
+  border: none;
+}
+
+.container-select select option {
+  color: black;
 }
