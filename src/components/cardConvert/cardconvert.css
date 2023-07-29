@@ -32,10 +32,9 @@
 
 .container-select select {
   background-color: transparent;
-  padding: 7px;
-  /* border: none; */
-  /* appearance: none; */
-  width: 218px;
+  border: none;
+  appearance: none;
+  width: 150px;
   height: 17px;
   flex-shrink: 0;
   color: #fff;
@@ -44,7 +43,13 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  border-bottom: 2px solid #fff;
+}
+
+.container-select p {
+  margin-top: 7px;
+  width: 218px;
+  height: 2px;
+  color: #fff;
 }
 
 .container-select select:focus {
