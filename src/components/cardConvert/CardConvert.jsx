@@ -1,11 +1,12 @@
 import "./cardconvert.css";
 import exchange from "./Exchange.png";
+import heart from "./Heart.png";
 
 const CardConvert = () => {
   return (
-    <section className="container-convert">
+    <main className="container-convert">
       <h2>convert</h2>
-      <div className="container-select">
+      <section className="container-select">
         <select name="select-convert">
           <option value="km">km → miles</option>
           <option value="miles">miles → km</option>
@@ -17,8 +18,14 @@ const CardConvert = () => {
         <img src={exchange} alt="flechas de conversion" />
         <input type="text" align="right" />
         <p>km</p>
-      </div>
-    </section>
+      </section>
+      <section className="select-convert-container">
+        <img src={heart} alt="corazon" />
+        <h3>
+          62.12 <span>miles</span>
+        </h3>
+      </section>
+    </main>
   );
 };
 

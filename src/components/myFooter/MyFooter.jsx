@@ -3,9 +3,10 @@ import "./myFooter.css";
 
 const MyFooter = () => {
   return (
-    <div>
-      <h1>Myfooter</h1>
-    </div>
+    <footer className="container-footer">
+      <h5>Terms of service</h5>
+      <h5>Privacy policy</h5>
+    </footer>
   );
 };
 
