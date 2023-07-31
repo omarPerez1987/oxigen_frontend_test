@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   gap: 31px;
-  width: 1728px;
+  margin-top: 472px;
+  width: auto;
   height: 39px;
   flex-shrink: 0;
   background: #2e0039;

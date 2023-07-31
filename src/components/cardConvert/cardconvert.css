@@ -1,32 +1,8 @@
 /* SECTION CARD_CONVERT */
 
-.container-convert {
-  margin: 48px 0px 0px 529px;
-  padding-left: 38px;
-  padding-top: 24px;
-  width: 714px;
-  height: 193px;
-  flex-shrink: 0;
-  border-radius: 21px;
-  background: #2e0039;
-  box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.2);
-}
-
-.container-convert h2 {
-  width: 104px;
-  height: 35px;
-  flex-shrink: 0;
-  color: #fff;
-  font-family: Poppins;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-
 .container-select {
   margin-top: 23px;
-  width: 218px;
+  width: auto;
   height: auto;
   display: flex;
   align-items: center;
@@ -70,8 +46,7 @@
 }
 
 .container-select input {
-  margin-top: 4px;
-  margin-left: 132px;
+  margin: 4px 10px 0px 97px;
   width: 221px;
   background-color: #2e0039;
   outline: none;
@@ -92,8 +67,7 @@
 }
 
 .container-select p {
-  margin-top: 4px;
-  margin-left: 9px;
+  margin: 4px 88px 0px 9px;
   width: 27px;
   height: 17px;
   flex-shrink: 0;
@@ -140,4 +114,19 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+
+@media screen and (max-width: 767px) {
+  .container-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+  }
+  
+  .container-select input {
+    margin: 4px 10px 0px 0px;
+  }
+
 }
