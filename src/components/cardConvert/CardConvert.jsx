@@ -7,7 +7,7 @@ const CardConvert = () => {
     <>
       <section>
         <div className="container-select">
-          <div>
+          <div className="container-select-img">
             <select name="select-convert">
               <option value="km">km → miles</option>
               <option value="miles">miles → km</option>

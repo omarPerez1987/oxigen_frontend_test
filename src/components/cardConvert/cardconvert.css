@@ -47,7 +47,7 @@
 
 .container-select input {
   margin: 4px 10px 0px 97px;
-  width: 221px;
+  width: 218px;
   background-color: #2e0039;
   outline: none;
   border: none;
@@ -79,12 +79,15 @@
   line-height: normal;
 }
 
+/* PARTE DE ABAJO DE LA CARD */
+
 .select-convert-container {
   display: flex;
   justify-content: space-between;
 }
 
 .select-convert-container img {
+  justify-self: start;
   margin-top: 30px;
   max-width: 24px;
   height: 24px;
@@ -92,6 +95,7 @@
 }
 
 .select-convert-container h3 {
+  justify-self: end;
   height: 30px;
   flex-shrink: 0;
   color: #fff;
@@ -116,17 +120,26 @@
   line-height: normal;
 }
 
-
 @media screen and (max-width: 767px) {
   .container-select {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
     align-items: center;
     margin-top: 16px;
   }
   
   .container-select input {
     margin: 4px 10px 0px 0px;
+    width: 218px;
   }
 
+  .container-select p {
+    margin: 4px 8px 0px 9px;
+  }
+
+  .select-convert-container span {
+    margin-right: 10px;
+  }
 }
