@@ -1,3 +1,23 @@
-width: 1728px;
-height: 48px;
-flex-shrink: 0;
+.container-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 31px;
+  margin-top: 472px;
+  width: auto;
+  height: 39px;
+  flex-shrink: 0;
+  background: #2e0039;
+}
+
+.container-footer h5 {
+  width: 108px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

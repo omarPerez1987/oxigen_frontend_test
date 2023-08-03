@@ -1,9 +1,9 @@
-
 /* HEADER  */
 .container-header {
   display: flex;
-  margin: 0 auto;
-  width: 1728px;
+  justify-content: center;
+  align-items: center;
+  width: auto;
   height: 48px;
   flex-shrink: 0;
   background: #fff;
@@ -11,7 +11,6 @@
 }
 
 .icon-header {
-  margin: 8px 11px 8px 529px;
   width: 32px;
   height: 32px;
   flex-shrink: 0;
@@ -19,7 +18,7 @@
 }
 
 .title-header {
-    margin: 10px 0px 7px 0px;
+  margin: 10px 0px 7px 11px;
   width: 156px;
   height: 31px;
   flex-shrink: 0;
