@@ -6,11 +6,20 @@ import heart from "./Heart.png";
 const CardConvert = () => {
   const [dataSelect, setDataSelect] = useState(["km", "miles"]);
   const [valueInput, setValueInput] = useState("");
-  
+  const [valueInputAfterChange, setValueInputAfterChange] = useState("");
+
   const [changeInputByResult, setChangeInputByResult] = useState(false);
-  
+
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setValueInput(value);
+    setValueInputAfterChange(value);
+  };
+
   // conversor de medidas
   let resConvert = valueInput;
+
   switch (dataSelect[0]) {
     case "km":
       resConvert = valueInput / 1.609344;
@@ -31,7 +40,6 @@ const CardConvert = () => {
       resConvert = valueInput * 2.54;
       break;
   }
-
 
   return (
     <>
@@ -57,7 +65,9 @@ const CardConvert = () => {
               src={exchange}
               alt="flechas de conversion"
               onClick={() =>
-                !changeInputByResult ? setChangeInputByResult(true) : setChangeInputByResult(false) && setValueInput(resConvert)
+                !changeInputByResult
+                  ? setChangeInputByResult(true)
+                  : setChangeInputByResult(false) && setValueInput(resConvert)
               }
             />
           </div>
@@ -66,12 +76,12 @@ const CardConvert = () => {
               <input
                 type="text"
                 align="right"
-                value={valueInput}
+                value={resConvert.toFixed(2)}
                 onChange={(e) => setValueInput(e.target.value)}
+                readOnly
               />
               <p>{dataSelect[1]}</p>
             </>
-
           ) : (
             <>
               <input
