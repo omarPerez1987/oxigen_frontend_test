@@ -1,11 +1,15 @@
 import "./cardSaved.css";
 import cruz from "./Cross.png";
 
-const CardSaved = ({key, input, distance, result}) => {
+const CardSaved = ({ key, index, input, distance, result, updateState }) => {
+  
+  const handleDeleteCard  = () => {
+    updateState(index);
+  };
   return (
     <div id={key} className="card-saved">
-      <p>{`${key} ${input} ${distance[0]} → ${result} ${distance[1]}`}</p>
-      <img src={cruz} alt="cruz de eliminar"/>
+      <p>{`${index} ${input} ${distance[0]} → ${result} ${distance[1]}`}</p>
+      <img src={cruz} alt="cruz de eliminar" onClick={handleDeleteCard } />
     </div>
   );
 };

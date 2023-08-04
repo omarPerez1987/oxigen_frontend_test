@@ -11,6 +11,11 @@ const CardConvert = () => {
   const [changeInputByResult, setChangeInputByResult] = useState(false);
   const [showNewCard, setShowNewCard] = useState([]);
 
+  // funcion para crear un indice random
+  // const indexRandom = () => {
+  //   return Math.floor(Math.random() * 1000);
+  // };
+
   // conversor de medidas
   let resConvert = valueInput;
 
@@ -35,16 +40,30 @@ const CardConvert = () => {
       break;
   }
 
+  // funcion para crear nuevo componente
   const handleClickShowNewCard = () => {
     const newComponent = (
       <CardSaved
         key={showNewCard.length}
+        index={showNewCard.length}
         input={valueInput}
         distance={dataSelect}
         result={resConvert.toFixed(2)}
+        updateState={updateStateforDelete()}
       />
     );
     setShowNewCard([...showNewCard, newComponent]);
+  };
+  // console.log(showNewCard[0].props.index)
+  const updateStateforDelete = (indexReturn) => {
+    for (let index = 0; index < showNewCard.length; index++) {
+      console.log(index)
+      if (showNewCard[index].props.index === indexReturn) {
+        console.log('estoy aki')
+        setShowNewCard(showNewCard.filter((item) => item.indexReturn !== indexReturn));
+      }
+    }
+    // setShowNewCard(showNewCard.splice(indexReturn, 1));
   };
 
   return (
