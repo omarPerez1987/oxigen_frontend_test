@@ -2,20 +2,14 @@ import { useState } from "react";
 import "./cardconvert.css";
 import exchange from "./Exchange.png";
 import heart from "./Heart.png";
+import CardSaved from "../cardSaved/CardSaved";
 
 const CardConvert = () => {
   const [dataSelect, setDataSelect] = useState(["km", "miles"]);
   const [valueInput, setValueInput] = useState("");
-  const [valueInputAfterChange, setValueInputAfterChange] = useState("");
 
   const [changeInputByResult, setChangeInputByResult] = useState(false);
-
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setValueInput(value);
-    setValueInputAfterChange(value);
-  };
+  const [showNewCard, setShowNewCard] = useState([]);
 
   // conversor de medidas
   let resConvert = valueInput;
@@ -41,72 +35,95 @@ const CardConvert = () => {
       break;
   }
 
+  const handleClickShowNewCard = () => {
+    const newComponent = (
+      <CardSaved
+        key={showNewCard.length}
+        input={valueInput}
+        distance={dataSelect}
+        result={resConvert.toFixed(2)}
+      />
+    );
+    setShowNewCard([...showNewCard, newComponent]);
+  };
+
   return (
     <>
-      <section>
-        <div className="container-select">
-          <div>
-            <select
-              name="select-convert"
-              value={dataSelect}
-              onChange={(e) => {
-                const convertArrayAndSeparate = e.target.value.split(",");
-                setDataSelect(convertArrayAndSeparate);
-              }}
-            >
-              <option value={["km", "miles"]}>km → miles</option>
-              <option value={["miles", "km"]}>miles → km</option>
-              <option value={["feet", "meter"]}>feet → meter</option>
-              <option value={["meter", "feet"]}>meter → feet</option>
-              <option value={["cm", "inch"]}>cm → inch</option>
-              <option value={["inch", "cm"]}>inch → cm</option>
-            </select>
-            <img
-              src={exchange}
-              alt="flechas de conversion"
-              onClick={() =>
-                !changeInputByResult
-                  ? setChangeInputByResult(true)
-                  : setChangeInputByResult(false) && setValueInput(resConvert)
-              }
-            />
+      <main className="main-convert">
+        <h2>convert</h2>
+        <section>
+          <div className="container-select">
+            <div>
+              <select
+                name="select-convert"
+                value={dataSelect}
+                onChange={(e) => {
+                  const convertArrayAndSeparate = e.target.value.split(",");
+                  setDataSelect(convertArrayAndSeparate);
+                }}
+              >
+                <option value={["km", "miles"]}>km → miles</option>
+                <option value={["miles", "km"]}>miles → km</option>
+                <option value={["feet", "meter"]}>feet → meter</option>
+                <option value={["meter", "feet"]}>meter → feet</option>
+                <option value={["cm", "inch"]}>cm → inch</option>
+                <option value={["inch", "cm"]}>inch → cm</option>
+              </select>
+
+              <img
+                src={exchange}
+                alt="flechas de conversion"
+                onClick={() =>
+                  !changeInputByResult
+                    ? setChangeInputByResult(true)
+                    : setChangeInputByResult(false) && setValueInput(resConvert)
+                }
+              />
+            </div>
+            {changeInputByResult ? (
+              <>
+                <input
+                  type="text"
+                  align="right"
+                  value={resConvert.toFixed(2)}
+                  onChange={(e) => setValueInput(e.target.value)}
+                  readOnly
+                />
+                <p>{dataSelect[1]}</p>
+              </>
+            ) : (
+              <>
+                <input
+                  type="text"
+                  align="right"
+                  value={valueInput}
+                  onChange={(e) => setValueInput(e.target.value)}
+                />
+                <p>{dataSelect[0]}</p>
+              </>
+            )}
           </div>
-          {changeInputByResult ? (
-            <>
-              <input
-                type="text"
-                align="right"
-                value={resConvert.toFixed(2)}
-                onChange={(e) => setValueInput(e.target.value)}
-                readOnly
-              />
-              <p>{dataSelect[1]}</p>
-            </>
-          ) : (
-            <>
-              <input
-                type="text"
-                align="right"
-                value={valueInput}
-                onChange={(e) => setValueInput(e.target.value)}
-              />
-              <p>{dataSelect[0]}</p>
-            </>
-          )}
-        </div>
-        <div className="select-convert-container">
-          <img src={heart} alt="corazon" />
-          {changeInputByResult ? (
-            <h3>
-              {valueInput} <span>{dataSelect[0]}</span>
-            </h3>
-          ) : (
-            <h3>
-              {resConvert.toFixed(2)} <span>{dataSelect[1]}</span>
-            </h3>
-          )}
-        </div>
-      </section>
+          <div className="select-convert-container">
+            <img src={heart} alt="corazon" onClick={handleClickShowNewCard} />
+
+            {changeInputByResult ? (
+              <h3>
+                {valueInput} <span>{dataSelect[0]}</span>
+              </h3>
+            ) : (
+              <h3>
+                {resConvert.toFixed(2)} <span>{dataSelect[1]}</span>
+              </h3>
+            )}
+          </div>
+        </section>
+      </main>
+      <aside>
+        <h3 className="title-saved">saved</h3>
+        <section className="container-saved">
+          {showNewCard.map((component) => component)}
+        </section>
+      </aside>
     </>
   );
 };

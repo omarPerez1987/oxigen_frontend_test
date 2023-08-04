@@ -1,5 +1,33 @@
 /* SECTION CARD_CONVERT */
 
+.main-convert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 48px;
+  padding-left: 38px;
+  padding-top: 24px;
+  max-width: 720px;
+  width: auto;
+  height: 193px;
+  flex-shrink: 0;
+  border-radius: 21px;
+  background: #2e0039;
+  box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.2);
+}
+
+.main-convert h2 {
+  width: 104px;
+  height: 35px;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
 .container-select {
   margin-top: 23px;
   width: auto;
@@ -43,6 +71,7 @@
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .container-select input {
@@ -92,6 +121,7 @@
   max-width: 24px;
   height: 24px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .select-convert-container h3 {
@@ -120,28 +150,36 @@
   line-height: normal;
 }
 
-@media screen and (max-width: 767px) {
-  .container-select {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-items: center;
-    margin-top: 16px;
-  }
-  
-  .container-select input {
-    margin: 4px 10px 0px 0px;
-    width: 218px;
-  }
+/* cardSaved */
 
-  .container-select p {
-    margin: 4px 8px 0px 9px;
-  }
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 714px;
+}
 
-  .select-convert-container span {
-    margin-right: 10px;
-  }
+.title-saved {
+  margin: 80px 0px 22px 0px;
+  width: 100%;
+  height: 26px;
+  flex-shrink: 0;
+  color: #676767;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.container-saved {
+  margin: 0px 0px 200px 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
 }
 
 .title-convert {
@@ -156,4 +194,56 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+  
+  .main-convert {
+    padding: 11px 0px 19px 21px;
+    width: auto;
+    height: 209px;
+  }
+
+  .container-select {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .container-select input {
+    margin: 4px 10px 0px 0px;
+    width: 218px;
+  }
+
+  .container-select p {
+    margin: 4px 8px 0px 9px;
+  }
+
+  .select-convert-container span {
+    margin-right: 10px;
+  }
+
+  .container-saved {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  aside {
+    width: 90%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  aside {
+    text-align: start;
+  }
+
+  .title-saved {
+    margin-left: 15px;
+  }
 }

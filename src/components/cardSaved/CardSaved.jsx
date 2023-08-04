@@ -1,12 +1,11 @@
-import React from "react";
 import "./cardSaved.css";
 import cruz from "./Cross.png";
 
-const CardSaved = () => {
+const CardSaved = ({key, input, distance, result}) => {
   return (
-    <div className="card-saved">
-      <p>100 miles → 160km</p>
-      <img src={cruz} alt="cruz de eliminar" />
+    <div id={key} className="card-saved">
+      <p>{`${key} ${input} ${distance[0]} → ${result} ${distance[1]}`}</p>
+      <img src={cruz} alt="cruz de eliminar"/>
     </div>
   );
 };
