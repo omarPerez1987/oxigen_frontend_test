@@ -11,12 +11,7 @@ const CardConvert = () => {
   const [changeInputByResult, setChangeInputByResult] = useState(false);
   const [showNewCard, setShowNewCard] = useState([]);
 
-  // funcion para crear un indice random
-  // const indexRandom = () => {
-  //   return Math.floor(Math.random() * 1000);
-  // };
-
-  // conversor de medidas
+  // switch convertidor
   let resConvert = valueInput;
 
   switch (dataSelect[0]) {
@@ -44,26 +39,25 @@ const CardConvert = () => {
   const handleClickShowNewCard = () => {
     const newComponent = (
       <CardSaved
-        key={showNewCard.length}
-        index={showNewCard.length}
+        id={showNewCard.length}
         input={valueInput}
         distance={dataSelect}
         result={resConvert.toFixed(2)}
-        updateState={updateStateforDelete()}
+        handleClickDelete={() => updateState(showNewCard.length)}
       />
     );
     setShowNewCard([...showNewCard, newComponent]);
   };
-  // console.log(showNewCard[0].props.index)
-  const updateStateforDelete = (indexReturn) => {
+
+  const updateState = (idReturn) => {
+    const newShow = [...showNewCard];
     for (let index = 0; index < showNewCard.length; index++) {
-      console.log(index)
-      if (showNewCard[index].props.index === indexReturn) {
-        console.log('estoy aki')
-        setShowNewCard(showNewCard.filter((item) => item.indexReturn !== indexReturn));
+      if (idReturn === showNewCard[index].props.id) {
+        newShow.splice(index, 1);
+        break; 
       }
+      setShowNewCard(newShow);
     }
-    // setShowNewCard(showNewCard.splice(indexReturn, 1));
   };
 
   return (
@@ -140,7 +134,11 @@ const CardConvert = () => {
       <aside>
         <h3 className="title-saved">saved</h3>
         <section className="container-saved">
-          {showNewCard.map((component) => component)}
+          {showNewCard.map((component) => (
+            <div key={component.props.id} className="card-saved">
+              {component}
+            </div>
+          ))}
         </section>
       </aside>
     </>
