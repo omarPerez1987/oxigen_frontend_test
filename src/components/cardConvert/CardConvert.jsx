@@ -35,29 +35,24 @@ const CardConvert = () => {
       break;
   }
 
-  // funcion para crear nuevo componente
+  // funcion para crear nuevo objeto el cual se añadira al estado/array 
   const handleClickShowNewCard = () => {
-    const newComponent = (
-      <CardSaved
-        id={showNewCard.length}
-        input={valueInput}
-        distance={dataSelect}
-        result={resConvert.toFixed(2)}
-        handleClickDelete={() => updateState(showNewCard.length)}
-      />
-    );
+    const newComponent = {
+      id: showNewCard.length,
+      input: valueInput,
+      distance: dataSelect,
+      result: resConvert.toFixed(2),
+    };
     setShowNewCard([...showNewCard, newComponent]);
   };
 
+  // funcion pasada a través del prop a CardSaved para que me devuelva 
+  // la posicion del click
   const updateState = (idReturn) => {
-    const newShow = [...showNewCard];
-    for (let index = 0; index < showNewCard.length; index++) {
-      if (idReturn === showNewCard[index].props.id) {
-        newShow.splice(index, 1);
-        break; 
-      }
-      setShowNewCard(newShow);
-    }
+    const newShow = showNewCard.filter(
+      (component) => component.id !== idReturn
+    );
+    setShowNewCard(newShow);
   };
 
   return (
@@ -134,10 +129,15 @@ const CardConvert = () => {
       <aside>
         <h3 className="title-saved">saved</h3>
         <section className="container-saved">
-          {showNewCard.map((component) => (
-            <div key={component.props.id} className="card-saved">
-              {component}
-            </div>
+          {showNewCard.map(({ index, id, input, distance, result }) => (
+            <CardSaved
+              key={index}
+              id={id}
+              input={input}
+              distance={distance}
+              result={result}
+              updateState={updateState}
+            />
           ))}
         </section>
       </aside>
