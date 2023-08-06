@@ -1,4 +1,3 @@
-import React from "react";
 import "./layout.css";
 import MyHeader from "../components/myHeader/MyHeader";
 import CardConvert from "../components/cardConvert/CardConvert";

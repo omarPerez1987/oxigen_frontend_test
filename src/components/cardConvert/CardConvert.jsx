@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./cardconvert.css";
 import exchange from "./Exchange.png";
 import heart from "./Heart.png";
@@ -7,13 +7,13 @@ import CardSaved from "../cardSaved/CardSaved";
 const CardConvert = () => {
   const [dataSelect, setDataSelect] = useState(["km", "miles"]);
   const [valueInput, setValueInput] = useState("");
-
+  
   const [changeInputByResult, setChangeInputByResult] = useState(false);
   const [showNewCard, setShowNewCard] = useState([]);
-
+  
   // switch convertidor
   let resConvert = valueInput;
-
+  
   switch (dataSelect[0]) {
     case "km":
       resConvert = valueInput / 1.609344;
@@ -27,15 +27,22 @@ const CardConvert = () => {
     case "meter":
       resConvert = valueInput / 0.3048;
       break;
-    case "cm":
+      case "cm":
       resConvert = valueInput * 0.3937;
       break;
     default:
       resConvert = valueInput * 2.54;
       break;
-  }
+    }
+    // Cargar los datos del Local Storage al montar el componente
+    useEffect(() => {
+      const savedData = localStorage.getItem("mySavedData");
+      if (savedData) {
+        setShowNewCard(JSON.parse(savedData));
+      }
+    }, []);
 
-  // funcion para crear nuevo objeto el cual se añadira al estado/array 
+  // funcion para crear nuevo objeto el cual se añadira al estado/array
   const handleClickShowNewCard = () => {
     const newComponent = {
       id: showNewCard.length,
@@ -44,16 +51,29 @@ const CardConvert = () => {
       result: resConvert.toFixed(2),
     };
     setShowNewCard([...showNewCard, newComponent]);
+    
+    // Actualizar el Local Storage
+    const showNewCardString = JSON.stringify([...showNewCard, newComponent]);
+    localStorage.setItem("mySavedData", showNewCardString);
+    
+    // Input vuelve a un string vacío
+    setValueInput("");
   };
-
-  // funcion pasada a través del prop a CardSaved para que me devuelva 
-  // la posicion del click
-  const updateState = (idReturn) => {
+  
+  // funcion pasada a través de prop a CardSaved para que me devuelva
+  // la posicion del array al hacer click y así actualizar el estado.
+  const deleteAndUpdateState = (idReturn) => {
     const newShow = showNewCard.filter(
       (component) => component.id !== idReturn
-    );
-    setShowNewCard(newShow);
-  };
+      );
+      setShowNewCard(newShow);
+      
+      // Actualizar el Local Storage
+      const showNewCardString = JSON.stringify(newShow);
+      localStorage.setItem("mySavedData", showNewCardString);
+    };
+    
+
 
   return (
     <>
@@ -136,7 +156,7 @@ const CardConvert = () => {
               input={input}
               distance={distance}
               result={result}
-              updateState={updateState}
+              updateState={deleteAndUpdateState}
             />
           ))}
         </section>
