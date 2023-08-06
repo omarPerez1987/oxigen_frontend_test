@@ -34,7 +34,7 @@ const CardConvert = () => {
       resConvert = valueInput * 2.54;
       break;
     }
-    // Cargar los datos del Local Storage al montar el componente
+    // Cargar los datos del Local Storage
     useEffect(() => {
       const savedData = localStorage.getItem("mySavedData");
       if (savedData) {
